@@ -71,32 +71,52 @@ export default function Home() {
           </div>
           <div className="mb-5">
             <label
-              htmlFor="password"
+              htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Your password
+              Name
             </label>
             <input
-              type="password"
-              id="password"
+              type="text"
+              id="name"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              placeholder="Name"
               required
             />
           </div>
-          <div className="mb-5">
-            <label
-              htmlFor="repeat-password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Repeat password
-            </label>
-            <input
-              type="password"
-              id="repeat-password"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              required
-            />
+
+          <div className="mb-5 grid lg:grid-cols-2 lg:space-x-2">
+            <div>
+              <label
+                htmlFor="regno"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Registration number
+              </label>
+              <input
+                type="number"
+                id="regno"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                placeholder="Registration number"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="phone"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Mobile no.
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                placeholder="Phone no."
+                required
+              />
+            </div>
           </div>
+
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
               <input
