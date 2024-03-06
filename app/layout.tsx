@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "CSE SMIT",
   description: "Homepage for the department of CSE SMIT",
   keywords: seoKeywords.join(", "),
+  authors: [{ url: "https://yourgotocoder.com", name: "Sudarshan Rai" }],
 };
 
 export default function RootLayout({
