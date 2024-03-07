@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-export default function Home() {
+export default function Page() {
+  async function createRequest(formData: FormData) {
+    "use server";
+    const rawFormData = {
+      name: formData.get("name"),
+    };
+    console.log(formData);
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
       <nav className="flex" aria-label="Breadcrumb">
@@ -33,9 +41,9 @@ export default function Home() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m1 9 4-4-4-4"
                 />
               </svg>
@@ -53,7 +61,7 @@ export default function Home() {
         </ol>
       </nav>
       <div className="mb-32 mt-12 lg:mt-32 text-left lg:max-w-5xl lg:w-full lg:mb-0 ">
-        <form className="max-w-sm mx-auto">
+        <form className="max-w-sm mx-auto" action={createRequest}>
           <div className="mb-5 w-full">
             <label
               htmlFor="email"
@@ -64,6 +72,7 @@ export default function Home() {
             <input
               type="email"
               id="email"
+              name="email"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
               placeholder="Email ID"
               required
@@ -79,6 +88,7 @@ export default function Home() {
             <input
               type="text"
               id="name"
+              name="name"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
               placeholder="Name"
               required
@@ -96,6 +106,7 @@ export default function Home() {
               <input
                 type="number"
                 id="regno"
+                name="regno"
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="Registration number"
               />
@@ -110,6 +121,7 @@ export default function Home() {
               <input
                 type="tel"
                 id="phone"
+                name="phone"
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="Phone no."
                 required
