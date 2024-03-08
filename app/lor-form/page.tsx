@@ -1,12 +1,20 @@
 import Image from "next/image";
+import { PendingModel } from "@/lib/db/models";
+import dbConnect from "@/lib/db/dbConnect";
 
-export default function Page() {
+export default async function Page() {
   async function createRequest(formData: FormData) {
     "use server";
+    await dbConnect();
     const rawFormData = {
       name: formData.get("name"),
     };
-    console.log(formData);
+    const formDataToBeSaved = new PendingModel({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      regno: formData.get("regno"),
+    });
+    await formDataToBeSaved.save();
   }
 
   return (
