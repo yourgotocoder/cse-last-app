@@ -3,13 +3,6 @@ import LorForm from "@/components/lorForm";
 import FacultyModel from "@/lib/db/models/FacultyModel";
 
 export default async function Page() {
-  const facultyData = await new FacultyModel({
-    emp_code: 122,
-    name: "Tester",
-    email: "sudarshan.r@smit.smu.edu.in",
-    createdAt: new Date(),
-  }).save();
-
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
       <nav className="flex" aria-label="Breadcrumb">

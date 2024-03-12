@@ -12,24 +12,16 @@ interface IFaculty {
 
 type FacultyModel = Model<IFaculty, {}>;
 
-const FacultySchema = new Schema<IFaculty, FacultyModel>(
-  {
-    email: String,
-    name: String,
-    emp_code: Number,
-    password: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    phone: [Number],
+const FacultySchema = new Schema<IFaculty, FacultyModel>({
+  email: String,
+  name: String,
+  emp_code: Number,
+  password: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
-  {
-    collection: "faculty-data",
-  },
-);
+  phone: [Number],
+});
 
-export default createModel<IFaculty, FacultyModel>(
-  "faculty-data",
-  FacultySchema,
-);
+export default createModel<IFaculty, FacultyModel>("faculties", FacultySchema);
