@@ -1,19 +1,35 @@
-import { prop } from "@typegoose/typegoose";
-import { nanoid } from "nanoid";
+import { Model, Schema } from "mongoose";
+import createModel from "../utils/createModel";
 
-export class Faculty {
-  @prop({ default: () => nanoid(9) })
-  _id: string;
-
-  @prop()
-  name: string;
-
-  @prop()
+interface IFaculty {
   email: string;
-
-  @prop()
-  password: number;
-
-  @prop()
+  name: string;
   emp_code: number;
+  password: string;
+  phone: number[];
+  createdAt: Date;
 }
+
+type FacultyModel = Model<IFaculty, {}>;
+
+const FacultySchema = new Schema<IFaculty, FacultyModel>(
+  {
+    email: String,
+    name: String,
+    emp_code: Number,
+    password: String,
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    phone: [Number],
+  },
+  {
+    collection: "faculty-data",
+  },
+);
+
+export default createModel<IFaculty, FacultyModel>(
+  "faculty-data",
+  FacultySchema,
+);

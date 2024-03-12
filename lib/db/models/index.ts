@@ -1,6 +1,5 @@
-import { Pending } from "./LoRRequest.model";
-import { Faculty } from "./FacultyModel";
-import { getModelForClass } from "@typegoose/typegoose";
+import LoRRequest from "./LoRRequest.model";
+import Faculty from "./FacultyModel";
 
-export const PendingModel = getModelForClass(Pending);
-export const FacultyModel = getModelForClass(Faculty);
+export const LoRRequestModel = LoRRequest;
+export const FacultyModel = Faculty;

@@ -1,16 +1,14 @@
 "use server";
 import { dbConnect } from "@/lib/db/dbConnect";
-import LoRRequestModel from "@/lib/db/models/LoRRequest.model";
+import { LoRRequestModel } from "@/lib/db/models";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   await dbConnect();
   const formData = await request.json();
-  const requestData = {
-    name: formData.name,
-  };
+
   const pendingData = new LoRRequestModel({
-    name: requestData.name,
+    name: formData.name,
     email: "",
     regno: 0,
     phone: "",
