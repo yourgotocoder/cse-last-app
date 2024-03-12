@@ -1,16 +1,25 @@
-import { prop } from "@typegoose/typegoose";
-import { nanoid } from "nanoid";
+import { Model, Schema } from "mongoose";
+import createModel from "../utils/createModel";
 
-export class Pending {
-  @prop({ default: () => nanoid(9) })
-  _id: string;
-
-  @prop()
-  name: string;
-
-  @prop()
+interface ILoRRequest {
   email: string;
-
-  @prop()
-  regno: number;
+  name: string;
+  regno?: number;
+  phone: string;
+  createdAt: Date;
 }
+
+type LoRRequestModel = Model<ILoRRequest, {}>;
+
+const LoRRequestSchema = new Schema<ILoRRequest, LoRRequestModel>({
+  email: String,
+  name: String,
+  regno: Number,
+  phone: String,
+  createdAt: Date,
+});
+
+export default createModel<ILoRRequest, LoRRequestModel>(
+  "lor-pending",
+  LoRRequestSchema,
+);

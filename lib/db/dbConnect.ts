@@ -19,7 +19,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-export default async function dbConnect() {
+export async function dbConnect() {
   if (cached.promise) {
     return cached.conn;
   }
@@ -30,7 +30,6 @@ export default async function dbConnect() {
     };
 
     cached.promise = connect(MONGODB_URL!, opts).then((mongoose) => {
-      console.log("Connected to DB");
       return mongoose;
     });
   }
