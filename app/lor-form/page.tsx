@@ -1,8 +1,20 @@
 "use server";
 import LorForm from "@/components/lorForm";
+import { dbConnect } from "@/lib/db/dbConnect";
 import FacultyModel from "@/lib/db/models/FacultyModel";
 
+async function getFacultyData() {
+  try {
+    await dbConnect();
+    const data = await FacultyModel.find();
+    return data;
+  } catch (err) {
+    console.debug(err);
+  }
+}
+
 export default async function Page() {
+  const facultyData = await getFacultyData();
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
       <nav className="flex" aria-label="Breadcrumb">
@@ -55,7 +67,14 @@ export default async function Page() {
         </ol>
       </nav>
       <div className="mb-32 mt-12 lg:mt-32 text-left lg:max-w-5xl lg:w-full lg:mb-0 ">
-        <LorForm />
+        {facultyData && facultyData.length > 0 && (
+          <LorForm
+            data={facultyData.map((faculty) => ({
+              text: faculty.name,
+              value: faculty._id.toString(),
+            }))}
+          />
+        )}
       </div>
     </main>
   );

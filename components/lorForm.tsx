@@ -1,18 +1,30 @@
 "use client";
 
+import { IFaculty } from "@/lib/db/models/FacultyModel";
 import { FormEvent, useState } from "react";
+import { TESelect } from "tw-elements-react";
+import { SelectData } from "tw-elements-react/dist/types/forms/Select/types";
 
-export default function LorForm() {
+type Props = {
+  data: {
+    text: string;
+    value: string;
+  }[];
+};
+
+export default function LorForm({ data }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [regno, setRegno] = useState(0);
   const [phone, setPhone] = useState("");
+  const [faculty, setFaculty] = useState("");
 
+  console.log(data);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await fetch("/lor-form/submit", {
       method: "POST",
-      body: JSON.stringify({ name, email, regno, phone }),
+      body: JSON.stringify({ name, email, regno, phone, faculty }),
       headers: {
         "content-type": "application/json",
       },
@@ -95,7 +107,15 @@ export default function LorForm() {
           />
         </div>
       </div>
-
+      <div className="relative mb-3 md:w-96 pt-5">
+        <TESelect
+          data={data}
+          label="Select Faculty"
+          onValueChange={(e: SelectData | SelectData[]) => {
+            setFaculty(e && ((e as SelectData).value as string));
+          }}
+        />
+      </div>
       <div className="flex items-start mb-5">
         <div className="flex items-center h-5">
           <input

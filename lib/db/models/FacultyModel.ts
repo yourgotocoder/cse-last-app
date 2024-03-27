@@ -1,7 +1,7 @@
 import { Model, Schema } from "mongoose";
 import createModel from "../utils/createModel";
 
-interface IFaculty {
+export interface IFaculty {
   email: string;
   name: string;
   emp_code: number;

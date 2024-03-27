@@ -9,9 +9,10 @@ export async function POST(request: NextRequest) {
 
   const pendingData = new LoRRequestModel({
     name: formData.name,
-    email: "",
-    regno: 0,
-    phone: "",
+    email: formData.email,
+    regno: +formData.regno,
+    phone: formData.phone,
+    faculty: formData.faculty,
     createdAt: new Date(),
   });
   await pendingData.save();

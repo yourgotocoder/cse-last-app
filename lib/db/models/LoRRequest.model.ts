@@ -1,4 +1,4 @@
-import { Model, Schema } from "mongoose";
+import { Model, ObjectId, Schema } from "mongoose";
 import createModel from "../utils/createModel";
 
 interface ILoRRequest {
@@ -7,6 +7,7 @@ interface ILoRRequest {
   regno?: number;
   phone: string;
   createdAt: Date;
+  faculty: ObjectId;
 }
 
 type LoRRequestModel = Model<ILoRRequest, {}>;
@@ -17,9 +18,13 @@ const LoRRequestSchema = new Schema<ILoRRequest, LoRRequestModel>({
   regno: Number,
   phone: String,
   createdAt: Date,
+  faculty: {
+    type: Schema.Types.ObjectId,
+    ref: "faculties",
+  },
 });
 
 export default createModel<ILoRRequest, LoRRequestModel>(
-  "lor-pending",
+  "pending-lors",
   LoRRequestSchema,
 );
