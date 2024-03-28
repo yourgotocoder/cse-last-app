@@ -114,6 +114,7 @@ export default function LorForm({ data }: Props) {
           onValueChange={(e: SelectData | SelectData[]) => {
             setFaculty(e && ((e as SelectData).value as string));
           }}
+          search
         />
       </div>
       <div className="flex items-start mb-5">

@@ -8,6 +8,8 @@ interface ILoRRequest {
   phone: string;
   createdAt: Date;
   faculty: ObjectId;
+  status: "not-viewed" | "pending" | "approved" | "rejected";
+  viewedAt?: Date;
 }
 
 type LoRRequestModel = Model<ILoRRequest, {}>;
@@ -22,6 +24,8 @@ const LoRRequestSchema = new Schema<ILoRRequest, LoRRequestModel>({
     type: Schema.Types.ObjectId,
     ref: "faculties",
   },
+  status: String,
+  viewedAt: Date,
 });
 
 export default createModel<ILoRRequest, LoRRequestModel>(
