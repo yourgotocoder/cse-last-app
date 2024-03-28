@@ -23,7 +23,11 @@ export async function POST(request: NextRequest) {
   // await pendingData.save();
   const mailService = MailService.getInstance();
   await mailService.createConnection();
-  const emailTemplate = lorRequestTemplate("Sudu", "", "");
+  const emailTemplate = lorRequestTemplate({
+    link: "",
+    sender: "",
+    reciever: "",
+  });
   await mailService.sendMail(IST, {
     from: "",
     to: "sudarshan.r@smit.smu.edu.in",

@@ -1,34 +1,35 @@
-const lorRequestTemplate = (
-  recipient: string,
-  sender: string,
-  link: string,
-) => {
+interface LorRequestTemplateInterface {
+  reciever: string;
+  sender: string;
+  link: string;
+}
+const lorRequestTemplate = (req: LorRequestTemplateInterface) => {
   const html = `
     <!DOCTYPE html>
-<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="x-apple-disable-message-reformatting">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-  <title>Reset your Password</title>
-  <link
-    href="https://fonts.googleapis.com/css?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700"
-    rel="stylesheet" media="screen">
-  <style>
-    
-  </style>
-</head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="x-apple-disable-message-reformatting">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+      <title>Reset your Password</title>
+      <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700"
+        rel="stylesheet" media="screen">
+      <style>
+        
+      </style>
+    </head>
 
-<body>
-</body>
+    <body>
+    </body>
 
-</html>`;
+    </html>`;
 
   const text = `
-        Letter of Recommendation request from ${sender}
+        Letter of Recommendation request from ${req.sender}
 `;
   return {
     html: html,
