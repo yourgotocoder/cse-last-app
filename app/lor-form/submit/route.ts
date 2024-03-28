@@ -3,6 +3,7 @@ import { dbConnect } from "@/lib/db/dbConnect";
 import { LoRRequestModel } from "@/lib/db/models";
 import FacultyModel from "@/lib/db/models/FacultyModel";
 import MailService from "@/lib/sendMail";
+import lorRequestTemplate from "@/lib/templates/lorRequest.template";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -19,15 +20,15 @@ export async function POST(request: NextRequest) {
   //   createdAt: new Date(),
   // });
   const faculty = await FacultyModel.findById(formData.faculty);
-  console.log(faculty);
   // await pendingData.save();
-  // const mailService = MailService.getInstance();
-  // await mailService.createConnection();
-  // await mailService.sendMail(IST, {
-  //   from: "",
-  //   to: "sudarshan.r@smit.smu.edu.in",
-  //   html: "Hello",
-  //   subject: "Testing",
-  // });
+  const mailService = MailService.getInstance();
+  await mailService.createConnection();
+  const emailTemplate = lorRequestTemplate("Sudu", "", "");
+  await mailService.sendMail(IST, {
+    from: "",
+    to: "sudarshan.r@smit.smu.edu.in",
+    html: emailTemplate.html,
+    subject: "Testing",
+  });
   return Response.json({ message: "Saved successfully" });
 }
